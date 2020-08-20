@@ -9,7 +9,7 @@ public class Seminar {
 	private String _name, _number, _description, _location;
 	private int _availableSeats;
 	private Lecturer _lecturer;
-	private ArrayList<Student> _enrolledStudents;
+	private ArrayList<Student> _enrollments;
 
 	public Seminar() {
 	}
@@ -17,7 +17,7 @@ public class Seminar {
 	public Seminar(String title, Lecturer lecturer) {
 		_name = title;
 		_lecturer = lecturer;
-		_enrolledStudents = new ArrayList<>();
+		_enrollments = new ArrayList<>();
 	}
 
 	public String getName() {
@@ -61,23 +61,23 @@ public class Seminar {
 	}
 
 	public void addStudent(Student student) {
-		_enrolledStudents.add(student);
+		_enrollments.add(student);
 	}
 	
 	public void removeStudent(Student student) {
-		_enrolledStudents.remove(student);
+		_enrollments.remove(student);
 	}
 	
 	public int getSeatsLeft() {
-		return _availableSeats - _enrolledStudents.size();
+		return _availableSeats - _enrollments.size();
 	}
 
 	public ArrayList<Student> getStudentList() {
-		return _enrolledStudents;
+		return _enrollments;
 	}
 	
 	public void printStudentList() {
-		 for (Student student : _enrolledStudents)
+		 for (Student student : _enrollments)
 			 SeminarApplication.print(student.getFullName());
 	}
 
