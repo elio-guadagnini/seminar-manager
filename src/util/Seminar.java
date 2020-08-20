@@ -9,7 +9,11 @@ public class Seminar {
 	private String _name, _number, _description, _location;
 	private int _availableSeats;
 	private Lecturer _lecturer;
+<<<<<<< new-master-branch
 	private ArrayList<Student> _enrolledStudents;
+=======
+	private ArrayList<Enrollment> _enrollments;
+>>>>>>> local
 
 	public Seminar() {
 	}
@@ -60,18 +64,28 @@ public class Seminar {
 		this._location = location;
 	}
 
+<<<<<<< new-master-branch
 	public void addStudent(Student student) {
 		_enrolledStudents.add(student);
 	}
 	
 	public void removeStudent(Student student) {
 		_enrolledStudents.remove(student);
+=======
+	public void addEnrollment(Enrollment enrollment) {
+		_enrollments.add(enrollment);
+	}
+	
+	public void removeEnrollment(Enrollment enrollment) {
+		_enrollments.remove(enrollment);
+>>>>>>> local
 	}
 	
 	public int getSeatsLeft() {
 		return _availableSeats - _enrolledStudents.size();
 	}
 
+<<<<<<< new-master-branch
 	public ArrayList<Student> getStudentList() {
 		return _enrolledStudents;
 	}
@@ -79,6 +93,20 @@ public class Seminar {
 	public void printStudentList() {
 		 for (Student student : _enrolledStudents)
 			 SeminarApplication.print(student.getFullName());
+=======
+	public ArrayList<String> getStudentList() {
+		ArrayList<String> students = new ArrayList<>();
+		for (Enrollment enrollment : _enrollments) {
+			students.add(enrollment.getStudent().getFullName());
+		}
+		
+		return students;
+	}
+	
+	public void printStudentList() {
+		 for (Enrollment enrollment : _enrollments)
+			 SeminarApplication.print(enrollment.getStudent().getFullName());
+>>>>>>> local
 	}
 
 }
