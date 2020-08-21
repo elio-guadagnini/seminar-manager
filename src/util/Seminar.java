@@ -2,54 +2,40 @@ package util;
 
 import java.util.ArrayList;
 
+import main.Course;
 import main.SeminarApplication;
 
 public class Seminar {
 
-	private String _name, _number, _description, _location;
+	private String _location;
 	private int _availableSeats;
-	private Lecturer _lecturer;
+	private Course _course;
 	private ArrayList<Enrollment> _enrollments;
 
 	public Seminar() {
 	}
 
-	public Seminar(String title, Lecturer lecturer) {
-		_name = title;
-		_lecturer = lecturer;
+	public Seminar(Course course, String location, int availableSeats) {
+		_course = course;
+		_location = location;
+		_availableSeats = availableSeats;
 		_enrollments = new ArrayList<>();
 	}
 
 	public String getName() {
-		return _name;
+		return _course.getName()+" "+_course.getNumber();
 	}
 
 	public void setName(String name) {
-		this._name = name;
+		_course.setName(name);
 	}
 
-	public String getNumber() {
-		return _number;
-	}
-
-	public void setNumber(String number) {
-		this._number = number;
-	}
-	
 	public String getDescription() {
-		return _description;
+		return _course.getDescription();
 	}
 
 	public void setDescription(String description) {
-		this._description = description;
-	}
-	
-	public Lecturer getLecturer() {
-		return _lecturer;
-	}
-
-	public void setLecturer(Lecturer _lecturer) {
-		this._lecturer = _lecturer;
+		_course.setDescription(description);;
 	}
 	
 	public String getLocation() {
@@ -60,16 +46,20 @@ public class Seminar {
 		this._location = location;
 	}
 
+	public int getSeatsLeft() {
+		return _availableSeats - _enrollments.size();
+	}
+	
+	public void setSeatsLeft(int availableSeats) {
+		_availableSeats = availableSeats;
+	}
+	
 	public void addEnrollment(Enrollment enrollment) {
 		_enrollments.add(enrollment);
 	}
 	
 	public void removeEnrollment(Enrollment enrollment) {
 		_enrollments.remove(enrollment);
-	}
-	
-	public int getSeatsLeft() {
-		return _availableSeats - _enrollments.size();
 	}
 
 	public ArrayList<String> getStudentList() {

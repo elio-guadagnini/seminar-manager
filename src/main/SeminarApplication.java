@@ -1,22 +1,21 @@
 package main;
 
-import java.util.Date;
-
 import util.Enrollment;
-import util.Lecturer;
 import util.Seminar;
 import util.Student;
 
 public class SeminarApplication {
 	
 	public static void main(String[] args) {
-		Seminar swEngineering = new Seminar("Sw is important.", new Lecturer("Mauro", "Peyye", 1));
+		Seminar swEngineering = new Seminar(new Course("Sw is important.", "1", "by ..."), "Lugano", 10);
 		
-	    Date date = new Date();  
+		print(swEngineering.getName());
+		print(swEngineering.getDescription());
 		
-		swEngineering.addEnrollment(new Enrollment(new Student("Elio", "Guadagnini", "Master"), date));
-		swEngineering.addEnrollment(new Enrollment(new Student("Elio", "Guadagnini", "Bachelor"), date));
+		swEngineering.addEnrollment(new Enrollment(new Student("Elio", "Guadagnini")));
+		swEngineering.addEnrollment(new Enrollment(new Student("Elio", "Guadagnino")));
 		
+		print(String.valueOf(swEngineering.getSeatsLeft()));
 		swEngineering.printStudentList();
 		
 		print("Closed.");
